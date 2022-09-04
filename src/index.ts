@@ -26,7 +26,11 @@ function startWebserver () {
     const segments = await mango.read(req.body ?? "Not Found")
     reply.code(404).send(segments);
   });
-  server.get("*", function (request, reply) {
+  server.post("*", async (req, reply) => { // handle all POST requests
+    await processData()
+    reply.code(200).send()
+  });
+  server.get("*", function (req, reply) {
     reply.code(404).send();
   });
   server.listen({ port: config.port }, function (err, address) {
