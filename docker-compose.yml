@@ -1,0 +1,14 @@
+version: '3'
+services:
+  mangodb:
+    container_name: mangodb
+    image: ghcr.io/mchangrh/mangodb:latest
+    ports:
+      - 27017:27017
+    restart: always
+  server:
+    image: ghcr.io/mchangrh/sb-server-2-plus:latest
+    container_name: sb-server
+    restart: always
+    ports:
+      - 8080:8080

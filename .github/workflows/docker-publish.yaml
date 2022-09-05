@@ -1,0 +1,24 @@
+name: Docker image builds
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  sb-server:
+    uses: ./.github/workflows/docker-build.yml
+    with:
+      name: "mangodb"
+      username: "mchangrh"
+      folder: "./containers/mangodb"
+    secrets:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  rsync-host:
+    uses: ./.github/workflows/docker-build.yml
+    with:
+      name: "sb-server-2-plus"
+      username: "mchangrh"
+      folder: "./"
+    secrets:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
