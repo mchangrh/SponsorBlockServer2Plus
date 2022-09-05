@@ -1,0 +1,9 @@
+name = "sbs2plus"
+# build
+main = "serverless/index.ts"
+minify = false
+tsconfig = "./serverless/tsconfig.json"
+# config
+account_id = "d5ccf1d783709bbdc23fc29786f38736"
+workers_dev = true
+compatibility_date = "2022-09-04"

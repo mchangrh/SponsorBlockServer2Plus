@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2018",
+    "lib": ["es2018", "webworker"],
+    "sourceMap": true,
+    "strict": true,
+    "outDir": "./worker",
+    "declaration": true,
+    "esModuleInterop": true,
+    "types": ["@cloudflare/workers-types"]
+  },
+  "include": [
+    "serverless/index.ts",
+  ],
+  "exclude": [
+    "node_modules",
+    "dist/"
+  ]
+}

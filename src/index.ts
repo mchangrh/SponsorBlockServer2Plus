@@ -20,6 +20,7 @@ async function postSkipSegments(request: FastifyRequest, reply: FastifyReply) {
 
 // start
 function startWebserver () {
+  server.get("/", (req, reply) => reply.redirect(301, "https://github.com/mchangrh/SponsorBlockServer2Plus#readme"))
   server.get("/api/status", (req, reply) => reply.send("All systems operational"));
   server.post("/api/skipSegments", postSkipSegments);
   server.get("/api/skipSegments", async (req, reply: FastifyReply) => {
