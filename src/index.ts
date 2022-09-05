@@ -3,7 +3,7 @@ import fastify, { FastifyRequest, FastifyReply } from 'fastify'
 const server = fastify()
 import * as mango from "./mangodb";
 import { setTimeout } from 'timers/promises';
-import * as config from "../config.json"
+import { config } from "./config"
 
 const processData = async () => await setTimeout(5000)
 
@@ -33,7 +33,7 @@ function startWebserver () {
   server.get("*", function (req, reply) {
     reply.code(404).send();
   });
-  server.listen({ port: config.port }, function (err, address) {
+  server.listen({ port: config.port, host: "::" }, function (err, address) {
     if (err) {
       console.error(err);
       process.exit(1);

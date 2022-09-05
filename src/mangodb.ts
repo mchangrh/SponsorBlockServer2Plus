@@ -1,12 +1,9 @@
 import * as net from "net";
-import { mangodb } from "../config.json"
-
-const PORT = mangodb.port || 27017
-const HOST = mangodb.host ?? "127.0.0.1"
+import { mangodb } from "./config"
 
 var client = new net.Socket();
-client.connect(PORT, HOST, () => {
-  console.log("connected to MangoDB at: " + HOST + ":" + PORT)
+client.connect(mangodb.port, mangodb.host, () => {
+  console.log("connected to MangoDB at: " + mangodb.host + ":" + mangodb.port)
 })
 
 client.on("error", (error) => {
