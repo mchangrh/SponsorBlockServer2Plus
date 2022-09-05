@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  sb-server:
+  mangodb:
     uses: ./.github/workflows/docker-build.yml
     with:
       name: "mangodb"
@@ -14,7 +14,7 @@ jobs:
       folder: "./containers/mangodb"
     secrets:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  rsync-host:
+  sb-server:
     uses: ./.github/workflows/docker-build.yml
     with:
       name: "sb-server-2-plus"
