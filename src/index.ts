@@ -1,6 +1,7 @@
 
 import fastify, { FastifyRequest, FastifyReply } from 'fastify'
 const server = fastify()
+import cors from '@fastify/cors'
 import * as mango from "./mangodb";
 import { setTimeout } from 'timers/promises';
 import { config } from "./config"
@@ -20,6 +21,11 @@ async function postSkipSegments(request: FastifyRequest, reply: FastifyReply) {
 
 // start
 function startWebserver () {
+  server.register(cors, {
+    origin: '*',
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type']
+  })
   server.get("/", (req, reply) => reply.redirect(301, "https://github.com/mchangrh/SponsorBlockServer2Plus#readme"))
   server.get("/api/status", (req, reply) => reply.send("All systems operational"));
   server.post("/api/skipSegments", postSkipSegments);

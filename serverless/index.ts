@@ -18,27 +18,34 @@ async function postSkipSegments(request: Request): Promise<Response> {
     })
   } else {
     await processData()
-    return new Response(`The server seems to be overloaded. Try again in a few seconds. Error Code: 502\n\nCheck /status for server status`, {
+    return addCORS(new Response(`The server seems to be overloaded. Try again in a few seconds. Error Code: 502\n\nCheck /status for server status`, {
       status: 502
-    })
+    }))
   }
+}
+
+const addCORS = (response: Response) => {
+  response.headers.set("Access-Control-Allow-Origin", "*")
+  response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+  response.headers.set("Access-Control-Allow-Headers", "Content-Type")
+  return response
 }
 
 async function handleRequest(request: Request): Promise<Response> {
   const { pathname, searchParams } = new URL(request.url)
   const method = request.method
   if (pathname === "/") {
-    return new Response(null, { status: 301, headers: { Location: "https://github.com/mchangrh/SponsorBlockServer2Plus#readme" } })
+    return addCORS(new Response(null, { status: 301, headers: { Location: "https://github.com/mchangrh/SponsorBlockServer2Plus#readme" } }))
   } else if (pathname === "/api/status") {
-    return new Response("All systems operational")
+    return addCORS(new Response("All systems operational"))
   } else if (pathname === "/api/skipSegments" && method === "GET") {
-    return new Response("Not Found", { status: 404 })
+    return addCORS(new Response("Not Found", { status: 404 }))
   } else if (pathname === "/api/skipSegments" && method === "POST") {
     return postSkipSegments(request)
   } else if (request.method === "POST") {
     await processData()
-    return new Response(null, { status: 200})
+    return addCORS(new Response(null, { status: 200}))
   } else {
-    return new Response(null, { status: 404 })
+    return addCORS(new Response(null, { status: 404 }))
   }
 }
