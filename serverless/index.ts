@@ -1,7 +1,6 @@
 export default {
 	async fetch(
 		request: Request,
-		env,
 		ctx: ExecutionContext
 	): Promise<Response> {
 		return await handleRequest(request)

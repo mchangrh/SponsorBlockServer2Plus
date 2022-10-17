@@ -5,13 +5,13 @@
     "lib": ["es2018", "webworker"],
     "sourceMap": true,
     "strict": true,
-    "outDir": "./worker",
+    "outDir": "../worker",
     "declaration": true,
     "esModuleInterop": true,
     "types": ["@cloudflare/workers-types"]
   },
   "include": [
-    "serverless/index.ts",
+    "./index.ts",
   ],
   "exclude": [
     "node_modules",
