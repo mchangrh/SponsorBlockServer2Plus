@@ -1,6 +1,6 @@
 # Web Scale SponsorBlock Server
 Joke Fork of [ajayyy/SponsorBlockServer](https://github.com/ajayyy/SponsorBlockServer)
-- Now backed by Web Scale MangoDB (thanks [@grub](https://github.com/grublets) for the native nc port)
+- Now backed by Web Scale MongoDB (thanks [@grub](https://github.com/grublets) for the native nc port)
 - Now with no more annoying fillers or rules
 
 API Endpoints
